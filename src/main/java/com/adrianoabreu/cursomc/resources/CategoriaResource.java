@@ -18,6 +18,8 @@ import java.util.stream.Collectors;
 import com.adrianoabreu.cursomc.domain.Categoria;
 import com.adrianoabreu.cursomc.dto.CategoriaDTO;
 import com.adrianoabreu.cursomc.services.CategoriaService;
+import javax.validation.Valid;
+
 
 @RestController
 @RequestMapping(value="/categorias")
