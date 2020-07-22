@@ -12,8 +12,8 @@ import com.adrianoabreu.cursomc.services.S3Service;
 @SpringBootApplication
 public class CursomcApplication implements CommandLineRunner {
 
-	@Autowired
-	private S3Service s3Service;
+//	@Autowired
+//	private S3Service s3Service;
 
 	
 	public static void main(String[] args) {
@@ -22,18 +22,7 @@ public class CursomcApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		s3Service.uploadFile("C:\\temp\\fotos\\GokuSuperSaiyajinAura.png");
+//		s3Service.uploadFile("C:\\temp\\fotos\\GokuSuperSaiyajinAura.png");
 	}
-/*
-<dependency>
-	<groupId>com.amazonaws</groupId>
-	<artifactId>aws-java-sdk</artifactId>
-	<version>LATEST</version>
-</dependency>
-<dependency>
-	<groupId>commons-io</groupId>
-	<artifactId>commons-io</artifactId>
-	<version>LATEST</version>
-</dependency>
-*/
+
 }
