@@ -38,14 +38,17 @@ public class ClienteResource {
 	}
 	
 	@RequestMapping(value="/email", method=RequestMethod.GET)
-	public ResponseEntity<Cliente> find(@RequestParam(value="value") String email) {
+	//public ResponseEntity<Cliente> find(@RequestParam(value="value") String email) {
+	public ResponseEntity<Cliente> find(@RequestParam String email) {
 		Cliente obj = service.findByEmail(email);
 		return ResponseEntity.ok().body(obj);
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<Void> insert(@Valid @RequestBody ClienteNewDTO objDto) {
+		System.out.println("passou por aqui");
 		Cliente obj = service.fromDTO(objDto);
+		System.out.println("Email: " + obj.getEmail() + "  ID: " + obj.getId());
 		obj = service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}").buildAndExpand(obj.getId()).toUri();
@@ -54,6 +57,7 @@ public class ClienteResource {
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Void> update(@Valid @RequestBody ClienteDTO objDto, @PathVariable Integer id) {
+		System.out.println("passou no update");
 		Cliente obj = service.fromDTO(objDto);
 		obj.setId(id);
 		obj = service.update(obj);

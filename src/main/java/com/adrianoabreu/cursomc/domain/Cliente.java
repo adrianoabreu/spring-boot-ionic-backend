@@ -17,6 +17,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 
 import com.adrianoabreu.cursomc.domain.enums.Perfil;
 import com.adrianoabreu.cursomc.domain.enums.TipoCliente;
@@ -33,8 +34,10 @@ public class Cliente implements Serializable {
 	private Integer id;
 	private String nome;
 	
+	
 	@Column(unique=true)
 	private String email;
+	
 	private String cpfOuCnpj;
 	private Integer tipo;
 

@@ -68,6 +68,7 @@ public class ClienteService {
 	@Transactional
 	public Cliente insert(Cliente obj) {
 		obj.setId(null);
+		System.out.println("passou por aqui também " + obj.getEmail() + "  ID: " + obj.getId());
 		obj = repo.save(obj);
 		enderecoRepository.saveAll(obj.getEnderecos());
 		return obj;
@@ -95,6 +96,8 @@ public class ClienteService {
 
 	public Cliente findByEmail(String email) {
 		UserSS user = UserService.authenticated();
+//		if (user == null || !user.hasRole(Perfil.ADMIN) && !email.equals(user.getUsername())) {
+		System.out.println("Username: " + user.getUsername());
 		if (user == null || !user.hasRole(Perfil.ADMIN) && !email.equals(user.getUsername())) {
 			throw new AuthorizationException("Acesso negado");
 		}
